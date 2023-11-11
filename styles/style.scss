@@ -1,0 +1,1133 @@
+@import"mixins";
+@import"variables";
+* {
+    @include overall;
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                   start header section
+                                                                                                                                                                                                                  -----------------------------------*/
+
+header {
+    transition: all 0.5s;
+    @include position(fixed, 0, 0, 0);
+    z-index: 2;
+    nav {
+        @include flex(space-around, center);
+        padding: 31px 0;
+    }
+}
+
+header.sticky {
+    background-color: #ffff;
+    transition: all 0.5s ease-in;
+    box-shadow: 12px 2px 19px #7a7a7a;
+    nav {
+        padding: 11px 0;
+    }
+}
+
+header {
+    ul {
+        display: flex;
+        list-style: none;
+        padding: 8px;
+        h3 {
+            @include fontStyle(1rem, 400, #000, capitalize);
+            &:first-child {
+                padding-right: 10px;
+            }
+        }
+        li {
+            padding: 0 16px;
+            position: relative;
+        }
+    }
+}
+
+li {
+    a {
+        color: #000;
+        i {
+            font-size: 0.89rem;
+            transition: 0.4s ease-in;
+        }
+        .fa.fa-dribbble {
+            font-weight: 600;
+        }
+        &:hover i {
+            color: $bgcolor;
+            transition: 0.5s ease-in-out;
+        }
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  sideBar section
+                                                                                                                                                                                                                 -----------------------------------*/
+
+.side-bar {
+    @include size(0, 100%);
+    @include position(fixed, 0, none, 0);
+    background-color: #fff;
+    transition: all 0.5s ease-in;
+    overflow-x: hidden;
+    z-index: 3;
+    box-shadow: -13px 0 41px #beb9b9;
+    .closebtn {
+        @include fontStyle(2rem, 500, #000, none);
+        @include position(absolute, 0, 12px, none);
+    }
+    .logo {
+        margin-top: 2rem;
+    }
+    a {
+        display: block;
+        padding: 17px 0px 11px;
+        text-decoration: none;
+        color: #000;
+        text-align: center;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.5s ease-in;
+    }
+}
+
+.open-menu {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.dropdown-container {
+    display: none;
+    .drop-item {
+        @include fontStyle(0.79rem, 400, gray, capitalize);
+        padding: 0 0 7px;
+    }
+}
+
+.dropdown-container.active {
+    display: block;
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  finish header section
+                                                                                                                                                                                                                    -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  start banner section
+                                                                                                                                                                                                                    ----------------------------------*/
+
+.container {
+    .banner {
+        background-image: url(../images/banner-1.jpg);
+        position: relative;
+        padding-bottom: 630px;
+        @include size(100%, 100%);
+        background-position: center;
+        overflow-x: hidden;
+        .row {
+            @include size(100%, 100%);
+            @include flex(flex-start, center);
+            transform: translate(10%, 273%);
+        }
+    }
+}
+
+.banner-text {
+    h3 {
+        &:first-child {
+            text-transform: capitalize;
+        }
+        @include fontStyle(3rem, 600, $txtcolor, normal);
+        span {
+            text-transform: uppercase;
+            color: $txtcolor;
+        }
+    }
+    .sub-main-text {
+        @include fontStyle(0.875rem, 200, #454545, capitalize);
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                     Finish banner section
+                                                                                                                                                                                                                -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                    start information part
+                                                                                                                                                                                                                  -----------------------------------*/
+
+.container-information {
+    padding: 7rem 0 4rem 0;
+    .header-part {
+        text-align: center;
+        line-height: 1.2;
+        padding-bottom: 4rem;
+        h4 {
+            @include fontStyle(2.5rem, 600, #030303, capitalize);
+            font-style: italic;
+        }
+        span {
+            @include fontStyle(0.875rem, 200, #988181, capitalize);
+        }
+    }
+}
+
+.container-information {
+    max-width: 1300px;
+    margin: 0 auto;
+    .row {
+        @include flex(flex-start, center);
+        .image-part {
+            width: 43%;
+            position: relative;
+            text-align: center;
+            img {
+                width: 80%;
+                background: $darkgray;
+                border-radius: 50%;
+                padding: 0 3rem;
+            }
+        }
+    }
+}
+
+.text-part {
+    width: 50%;
+    .text-container {
+        display: flex;
+        position: relative;
+        i {
+            font-size: 2.5rem;
+            color: $darkgray;
+            @include position(absolute, -13px, -7px, 0);
+        }
+    }
+}
+
+.text-information {
+    margin: 0 0 0 2.5rem;
+    blockquote {
+        @include fontStyle(0.875rem, normal, #434343, initial);
+        line-height: 1.5;
+    }
+    .signature {
+        padding: 2rem 0 3rem;
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                 start slider part changes
+                                                                                                                                                                                                                -----------------------------------*/
+
+.sliderLogo {
+    .item {
+        width: 190px;
+    }
+    .owl-nav {
+        position: relative;
+        .owl-prev {
+            @include position(absolute, -62px, -27px, none);
+            span {
+                font-size: 3rem;
+            }
+        }
+        .owl-next {
+            @include position(absolute, -62px, none, -12px);
+            span {
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                    Finish slider part changes
+                                                                                                                                                                                                                -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                     start personal information
+                                                                                                                                                                                                                  -----------------------------------*/
+
+.container-personal {
+    padding-bottom: 8rem;
+    @include maxWidth;
+    .row {
+        @include flex(center, none);
+        .information-part {
+            width: 50%;
+            p {
+                &:first-child {
+                    padding: 2rem 0 1.3rem 0;
+                }
+                padding: 1.3rem 0;
+                @include fontStyle(1rem, normal, $bgcolor, capitalize);
+                font-style: italic;
+                span {
+                    color: $txtcolor;
+                }
+            }
+        }
+    }
+}
+
+.abilities {
+    width: 44%;
+    .line-1,
+    .line-2,
+    .line-3,
+    .line-4 {
+        @include line;
+    }
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+    }
+    .line-1 {
+        @include after(75%, $bgcolor);
+    }
+    .line-2 {
+        @include after(85%, $bgcolor);
+    }
+    .line-3 {
+        @include after(90%, $bgcolor);
+    }
+    .line-4 {
+        @include after(65%, $bgcolor);
+    }
+}
+
+.download-button {
+    .btn-download {
+        @include button;
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                    finish personal information
+                                                                                                                                                                                                                  ----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                   Finish information part
+                                                                                                                                                                                                                 ---------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                 start  offer section
+                                                                                                                                                                                                          ----------------------------------*/
+
+.offer-container {
+    background: $darkgray;
+    padding: 9rem 0 4rem 0;
+    .offer-header {
+        text-align: center;
+        padding-bottom: 3rem;
+        @include containerHead;
+    }
+}
+
+.offer-container {
+    .row-card {
+        @include flex(center, center);
+        max-width: 1150px;
+        margin: 0 auto;
+        .owl-stage {
+            padding-top: 50px;
+        }
+    }
+}
+
+.row-card {
+    .card {
+        @include size(367px, 238px);
+        background-color: $white;
+        .card-icon {
+            position: relative;
+            .icon {
+                @include position(absolute, -32px, 43%, 0);
+                @include size(70px, 70px);
+                background: $white;
+                border-radius: 50%;
+                transition: all 0.5s ease-in;
+                i {
+                    margin: 22px 25px;
+                    font-size: 1.4rem;
+                    transition: all 0.5s ease-in;
+                }
+                .fa-wordpress,
+                .fa-code,
+                .fa-user-circle {
+                    margin: 24px;
+                }
+            }
+        }
+        .card-header {
+            h3 {
+                padding: 4rem 36px 1rem 2.5rem;
+                transition: all 0.5s ease-in;
+                @include fontStyle(1.1rem, 600, #616161, capitalize);
+            }
+        }
+        .card-body {
+            p {
+                line-height: 1.8;
+                padding: 0.5rem 45px 0rem 2.5rem;
+                @include fontStyle(0.85rem, normal, #272727, capitalize);
+            }
+        }
+    }
+}
+
+.card {
+    &:hover {
+        .card-header {
+            h3 {
+                color: $bgcolor;
+            }
+        }
+        .card-icon {
+            .icon {
+                background-color: $bgcolor;
+            }
+            i {
+                color: $white;
+            }
+        }
+    }
+}
+
+.row-card {
+    .owl-nav {
+        margin: 3rem 0;
+        button.owl-prev,
+        button.owl-next {
+            margin: 0.25rem;
+            @include size(27px, 28px);
+            background: $txtcolor;
+            border-radius: 50%;
+            transition: all 0.2s ease-in;
+            &:hover {
+                background-color: $bgcolor;
+                color: $txtcolor;
+            }
+            span {
+                @include fontStyle(1.5rem, bold, $white, none);
+            }
+        }
+    }
+}
+
+
+/* ------------------------                                                                                                              start  gallery section
+                                                                                                                                                                                                                 -----------------------------------*/
+
+.gallery-container {
+    padding: 9rem 0 8rem;
+    .gallery-header {
+        text-align: center;
+        padding-bottom: 5rem;
+        @include containerHead;
+    }
+}
+
+.gallery-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    .row {
+        padding: 0 0 20px 0;
+        .tabs {
+            @include fontStyle(1.2rem, normal, #272727, capitalize);
+            font-style: italic;
+            padding: 1rem;
+            cursor: pointer;
+        }
+    }
+    .pic.hide {
+        display: none;
+    }
+    .pic.show {
+        display: block;
+        animation: animate 0.5s ease-in;
+        transition: all 0.5s ease-in;
+    }
+}
+
+.gallery-container {
+    .tabs.active {
+        background: #ffa700;
+        padding: 11px;
+        border-radius: 5px;
+        color: #fff
+    }
+}
+
+.gallery-container {
+    .view-button {
+        text-align: center;
+        .btn-view {
+            text-transform: capitalize;
+            @include button;
+            i {
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(0.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                 start  picture edit 
+                                                                                                                                                                                                                -----------------------------------*/
+
+.picture-container {
+    display: flex;
+    gap: 30px;
+    .pic.graphic {
+        display: none;
+    }
+    .pic {
+        margin: 0 0 17px;
+        position: relative;
+        .up-side {
+            @include position(absolute, 0, 0, none);
+            @include size(39%, 45%);
+            background-color: #ffa70063;
+            opacity: 0;
+            transition: 0.75s;
+        }
+        // &:hover .up-side {
+        //     @include size(100%, 99%);
+        //     opacity: 1;
+        // }
+        .down-side {
+            @include size(39%, 45%);
+            @include position(absolute, none, none, 0);
+            bottom: 3px;
+            background: #ffa6006b;
+            transition: 0.9s;
+            opacity: 0;
+            z-index: 1;
+        }
+        // &:hover .down-side {
+        //     opacity: 1;
+        //     @include size(100%, 99%);
+        //     transition-delay: 0.2s;
+        // }
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                 End  picture edit 
+                                                                                                                                                                                                                 -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                 start  picture link Edit 
+                                                                                                                                                                                                                -----------------------------------*/
+
+.picture-container {
+    .pic {
+        position: relative;
+        .link-picture {
+            @include position(absolute, 34%, 0, 0);
+            z-index: 2;
+            transition: 0.8s;
+            opacity: 0;
+        }
+        a {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            text-decoration: none;
+            @include fontStyle(1.5rem, normal, #fff, capitalize);
+            i {
+                padding-bottom: 10px;
+                font-size: 2rem;
+            }
+        }
+        &:hover .link-picture {
+            top: 40%;
+            opacity: 1;
+            transition-delay: 0.4s;
+        }
+    }
+}
+
+//picture modal 
+.picture-container {
+    #modalContainer {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        z-index: 2;
+        background: #000000bf;
+        padding-top: 7rem;
+        animation: tab 0.5s ease-in;
+        img {
+            border-radius: 15px;
+        }
+        #exit {
+            position: absolute;
+            color: #ffff;
+            font-size: 1.55rem;
+            top: 82px;
+            background: $bgcolor;
+            border-radius: 3px;
+            padding: 0 10px;
+            margin: 0 3px;
+            cursor: pointer;
+        }
+    }
+    .pictures {
+        cursor: pointer;
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                      End  picture link Edit 
+                                                                                                                                                                                                                  -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                   Start  work together 
+                                                                                                                                                                                                                -----------------------------------*/
+
+.container-work {
+    background-color: $darkgray;
+    .row-work {
+        @include maxWidth;
+        text-align: center;
+        padding: 7.5rem 0;
+        h1 {
+            @include fontStyle(3rem, bold, #1d1c1c, capitalize);
+            font-style: italic;
+            margin: 2rem;
+        }
+        span {
+            @include fontStyle(0.875rem, normal, $spancolor, capitalize);
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+        .hire-button {
+            text-transform: capitalize;
+            margin: 2rem 0 0rem 0;
+            text-align: center;
+            .btn-hire {
+                @include button;
+                i {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                      end work together 
+                                                                                                                                                                                                                 -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  Start Resume part 
+                                                                                                                                                                                                                -----------------------------------*/
+
+.container-resume {
+    .container-head {
+        padding: 6rem 0 3rem;
+        @include containerHead;
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                    Start tab pane buttons
+                                                                                                                                                                                                                  -----------------------------------*/
+
+.container-resume {
+    @include maxWidth;
+    text-align: center;
+    .tabs {
+        padding-bottom: 7rem;
+        .tab.left {
+            background: #e6e3e3bf;
+            border-radius: 50px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            @include interval(0 0, 18px 42px);
+        }
+        .tab.right {
+            background: #e6e3e3bf;
+            padding: 18px 42px;
+            border-radius: 50px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0
+        }
+        .tab.active {
+            background-color: $bgcolor;
+            color: #fff;
+        }
+        a {
+            cursor: pointer;
+        }
+    }
+    [data-tab-content] {
+        display: none;
+    }
+    .active[data-tab-content] {
+        display: block;
+        animation: tab 0.5s ease-in;
+    }
+}
+
+@keyframes tab {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                     End tab pane buttons
+                                                                                                                                                                                                                   -----------------------------------*/
+
+
+/* ---------------------------------                                                                                                                                                                                               
+                                                                                                                                                                                                                         Start tab pane boxes
+                                                                                                                                                                                                                          -----------------------------------*/
+
+.container-resume {
+    .resume-tabcontent {
+        display: flex;
+        flex-direction: column;
+    }
+    #experiense,
+    #education {
+        .row-main {
+            display: flex;
+            flex-direction: column;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            .card-part {
+                margin: 0 100px 0 0;
+            }
+            .box {
+                @include size(256px, 154px);
+                border: 2px solid $bgcolor;
+                .card-icon {
+                    position: relative;
+                    .icon {
+                        background: #ffb220;
+                        @include position(absolute, -26px, 100px, none);
+                        @include size(56px, 56px);
+                        border-radius: 10px;
+                        i {
+                            margin: 18px 0;
+                            font-size: 1.5rem;
+                            color: #fff;
+                        }
+                    }
+                }
+                .card-text {
+                    margin: 60px 0;
+                }
+            }
+        }
+    }
+}
+
+#experiense,
+#education {
+    .text-part {
+        width: 40%;
+        text-align: justify;
+        .head-info {
+            margin-bottom: 20px;
+            line-height: 1.3;
+            p {
+                @include fontStyle(1.5rem, normal, #1b1b1b, capitalize);
+            }
+            span {
+                font-style: italic;
+                @include fontStyle(0.76rem, 100, black, capitalize);
+            }
+        }
+        .main-info {
+            p {
+                font-size: 0.875rem;
+                line-height: 1.8;
+                color: #414141
+            }
+        }
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                    End tab pane boxes
+                                                                                                                                                                                                               -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                 End Resume part 
+                                                                                                                                                                                                                 -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  start client slider
+                                                                                                                                                                                                                 -----------------------------------*/
+
+.container-client-slider {
+    max-width: 1230px;
+    margin: 0 auto;
+    text-align: center;
+    .client-head {
+        padding: 5rem 0;
+        @include containerHead;
+    }
+}
+
+.container-client-slider {
+    padding-bottom: 5rem;
+    .row-slide {
+        @include flex(center, center);
+        padding-bottom: 4rem;
+        .text-part {
+            width: 55%;
+            display: inline;
+            text-align: right;
+            p {
+                @include fontStyle(1rem, 400, #3e3d3d, capitalize);
+                line-height: 1.8;
+                font-style: italic;
+                i {
+                    font-size: 2.5rem;
+                    color: #d6d6d6;
+                    position: absolute;
+                    top: 77px;
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+    .image-part {
+        margin: 0 114px;
+    }
+}
+
+.container-client-slider {
+    .row-author {
+        .author-name {
+            p {
+                color: $bgcolor;
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+.container-client-slider {
+    .row-author {
+        margin: 3rem 0 0 2rem;
+        @include flex(space-between, center);
+        p {
+            @include fontStyle(1.2rem, bold, $bgcolor, capitalize);
+            font-style: italic;
+        }
+        span {
+            @include fontStyle(0.9rem, 100, #666363, capitalize);
+        }
+        i {
+            color: $bgcolor;
+        }
+    }
+}
+
+.container-client-slider {
+    .image-part {
+        position: relative;
+        .client-image {
+            position: relative;
+            .top-image {
+                content: " ";
+                position: absolute;
+                @include size(0, 0);
+                border-bottom: 249px solid $bgcolor;
+                border-right: 244px solid transparent;
+                bottom: 1px;
+                opacity: 0.8;
+            }
+        }
+        .backpart {
+            @include size(105%, 92%);
+            @include position(absolute, 94px, none, -67px);
+            background: transparent;
+            border-right: 57px solid #fa3587fa;
+            border-bottom: 58px solid #fa3587fa;
+            .shadow {
+                position: absolute;
+                top: -30px;
+                right: -51px;
+                background: #ffff;
+                width: 53px;
+                height: 32px;
+                box-shadow: 0px 20px 16px 20px #fff;
+            }
+        }
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  start client slider button
+                                                                                                                                                                                                                 -----------------------------------*/
+
+.container-client-slider {
+    .owl-nav {
+        @include position(absolute, none, 0, -35px);
+        bottom: 100px;
+        button.owl-prev,
+        button.owl-next {
+            @include size(20px, 20px);
+            @include fontStyle(1.1rem, bold, #fff, normal);
+            background: darkslategray;
+            border-radius: 50%;
+            margin: 0 7px;
+            transition: all 0.2s ease-in;
+            &:hover {
+                background-color: $bgcolor;
+                color: black;
+            }
+        }
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  finish client slider buttons
+                                                                                                                                                                                                                 -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  finish client slider
+                                                                                                                                                                                                                 -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  Start news part
+                                                                                                                                                                                                                 -----------------------------------*/
+
+.container-news-part {
+    max-width: 1141px;
+    margin: 0 auto;
+    text-align: center;
+    .news-head {
+        @include containerHead;
+        padding-bottom: 5rem;
+    }
+    .row-new-main {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  Start news part text part
+                                                                                                                                                                                                                 -----------------------------------*/
+
+.row-new-main {
+    .row-news-left-side,
+    .row-news-right-side {
+        @include flex(space-between, center);
+        margin: 12px 0;
+        .text-part {
+            width: 44%;
+            .news-information {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
+.news-information {
+    a {
+        text-decoration: none;
+        line-height: 2;
+        h3 {
+            color: black;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+        }
+        span {
+            color: #a0a0a0;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+.row-news-right-side,
+.row-news-left-side {
+    .text-part {
+        @include size(44%, 327px);
+        /* margin-top: 120px; */
+        flex-direction: column;
+        @include flex(space-around, flex-end);
+        .date-news {
+            display: flex;
+            margin: 0 -84px 0 0;
+            z-index: 1;
+            .num {
+                order: 1;
+                @include fontStyle(2rem, bold, $bgcolor, normal);
+            }
+            .date {
+                display: flex;
+                flex-direction: column;
+                @include interval(-10px 0, 0 0 0 14px);
+                align-items: flex-start;
+                color: #605b5b;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+
+.row-news-right-side {
+    .text-part {
+        align-items: flex-start;
+        .date-news {
+            margin: 0 0 0 -86px;
+            .num {
+                order: 0;
+            }
+        }
+    }
+}
+
+.container-news-part {
+    .view-button {
+        padding: 2.5rem 0 6rem 0;
+        .view-btn {
+            @include button;
+            i {
+                margin-left: 5px
+            }
+        }
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  finish news part text part
+                                                                                                                                                                                                                 -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  finish news part
+                                                                                                                                                                                                                 -----------------------------------*/
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                  Start form part
+                                                                                                                                                                                                                 -----------------------------------*/
+
+.container-form {
+    @include maxWidth;
+    text-align: center;
+    .form-head {
+        @include containerHead;
+        padding-bottom: 4rem;
+    }
+}
+
+form {
+    .row-form {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        input {
+            padding: 1.3rem 1rem;
+            width: 48%;
+            margin-bottom: 13px;
+            background: #f8f8f8;
+            border: none;
+            outline: none;
+        }
+    }
+    .massege-area {
+        padding: 1.3rem 1rem;
+        background: #f8f8f8;
+        border: none;
+        outline: none;
+    }
+}
+
+form {
+    .send-button {
+        padding: 3rem 0 5rem 0;
+        .btn-send {
+            @include button;
+            i {
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
+
+/* ---------------------------------
+                                                                                                                                                                                                                              Finish form part
+                                                                                                                                                                                                                           -----------------------------------*/
+
+button#Btnscroll {
+    position: fixed;
+    right: 10px;
+    bottom: 7px;
+    z-index: 99;
+    width: 50px;
+    height: 50px;
+    background: #ffa700;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}

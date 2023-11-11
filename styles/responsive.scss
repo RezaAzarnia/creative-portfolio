@@ -1,0 +1,738 @@
+@import "mixins";
+@import "variables";
+* {
+  @include overall;
+}
+
+/*--------------------------------------
+Start header responsive
+----------------------------------------*/
+
+@include responsive(xs) {
+  header {
+    nav {
+      h3 {
+        display: none;
+      }
+      li {
+        padding: 0 11px;
+      }
+    }
+  }
+  .container {
+    .banner {
+      .row {
+        transform: translate(6%, 325%);
+      }
+      h3,
+      span.main-text {
+        font-size: 2.2rem;
+      }
+    }
+  }
+}
+
+@include responsive(xxs) {
+  .container {
+    .banner {
+      h3,
+      span.main-text {
+        font-size: 1.9rem;
+      }
+    }
+  }
+}
+
+/*----------------------------------------
+     start container information responsive 
+    -----------------------------------------*/
+
+@include responsive(xs) {
+  .container-information {
+    width: 100%;
+    padding: 7rem 0 1rem 0;
+    .row {
+      .image-part,
+      .text-part {
+        width: 100%;
+      }
+      .text-part {
+        margin-top: 1rem;
+      }
+      .image-part {
+        img {
+          width: 90%;
+        }
+      }
+    }
+    @include owls(-83px, 13px, 13px);
+  }
+  .sliderLogo {
+    .item {
+      @include size_2(80%, 0 auto);
+    }
+  }
+}
+
+@include responsive(xxs) {
+  .container-information {
+    @include owls(-69px, 13px, 12px);
+  }
+}
+
+@include responsive(sm) {
+  .container-information {
+    @include owls(-69px, -12px, -19px);
+  }
+  .sliderLogo {
+    .item {
+      width: 95%;
+    }
+  }
+  .container-information {
+    @include Xsmax(auto);
+    .row {
+      .image-part {
+        @include size_2(60%, 0 auto);
+        img {
+          width: 100%;
+        }
+      }
+      .text-part {
+        @include size_2(100%, 1rem auto 0);
+      }
+    }
+  }
+}
+
+@include responsive(md) {
+  .sliderLogo {
+    .item {
+      width: 100%;
+    }
+  }
+  .container-information {
+    max-width: 668px;
+    margin: 0 auto;
+    @include owls(-63px, -22px, -19px);
+    .row {
+      .image-part {
+        @include size_2(60%, 0 auto);
+        img {
+          width: 93%;
+        }
+      }
+      .text-part {
+        @include size_2(95%, 1rem 0 auto);
+      }
+    }
+  }
+}
+
+@include responsive(lg) {
+  .sliderLogo {
+    .item {
+      width: 97%;
+    }
+  }
+  .container-information {
+    @include lgmax;
+    .row {
+      .image-part {
+        width: 39%;
+        img {
+          width: 95%;
+        }
+      }
+      .text-part {
+        width: 59%;
+      }
+    }
+  }
+}
+
+/*----------------------------------------
+   Finish container information responsive 
+    -----------------------------------------*/
+
+/*----------------------------------------
+   Start container personal responsive 
+    -----------------------------------------*/
+
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .container-personal {
+    .information-part {
+      padding-bottom: 2rem;
+    }
+    @include size_2(auto, 0 6%);
+    .row {
+      .information-part,
+      .abilities {
+        width: 50%;
+      }
+      .line-1,
+      .line-2,
+      .line-3,
+      .line-4 {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include responsive(768) {
+  .container-personal {
+    padding-bottom: 4rem;
+    .information-part {
+      padding-bottom: 2rem;
+    }
+    @include size_2(auto, 0 6%);
+    .row {
+      .information-part,
+      .abilities,
+      .line-1,
+      .line-2,
+      .line-3,
+      .line-4 {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include responsive(sm) {
+  .container-personal {
+    @include Xsmax(auto);
+  }
+}
+
+@include responsive(md) {
+  .container-personal {
+    @include mdmax;
+  }
+}
+
+@include responsive(lg) {
+  .container-personal {
+    @include lgmax;
+    .line-1,
+    .line-2,
+    .line-3,
+    .line-4 {
+      width: 100%;
+    }
+  }
+}
+
+/*----------------------------------------
+   Finish container personal responsive 
+    -----------------------------------------*/
+
+/*----------------------------------------
+   Start offer container responsive 
+    -----------------------------------------*/
+
+@include responsive(xs) {
+  .offer-container {
+    padding: 2rem 0;
+    .row-card {
+      .card {
+        @include size_2(95%, 0 auto);
+      }
+    }
+  }
+}
+
+@include responsive(sm) {
+  .offer-container {
+    padding: 2rem 0;
+    .row-card {
+      .card {
+        @include size_2(97%, 0 auto);
+      }
+    }
+  }
+}
+
+@include responsive(md) {
+  .offer-container {
+    .row-card {
+      @include mdmax;
+    }
+    .card {
+      width: 97%;
+    }
+  }
+}
+
+@include responsive(lg) {
+  .offer-container {
+    .row-card {
+      @include lgmax;
+    }
+    .card {
+      width: 98%;
+    }
+  }
+}
+
+/*----------------------------------------
+    Finish offer container responsive 
+    -----------------------------------------*/
+
+/*----------------------------------------
+    Start resume container responsive 
+    -----------------------------------------*/
+
+@include responsive(768) {
+  .container-resume {
+    .container-head {
+      padding: 4rem 0;
+    }
+    .tabs {
+      padding-bottom: 5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 534px) {
+  .container-resume {
+    @include Xsmax(auto);
+    .tabs .tab.right,
+    .tabs .tab.left {
+      padding: 18px 6%;
+    }
+  }
+  .container-resume {
+    #experiense,
+    #education {
+      .row-main {
+        .row {
+          .text-part {
+            width: 93%;
+            margin-top: 20px;
+            text-align: justify;
+          }
+          .card-part {
+            margin: 0;
+            width: 95%;
+            .box {
+              width: 100%;
+            }
+            .icon {
+              left: 41%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 534px) and (max-width: 768px) {
+  .container-resume {
+    max-width: 600px;
+    margin: 0 auto;
+    #experiense,
+    #education {
+      .row-main {
+        .row {
+          justify-content: space-between;
+          .text-part {
+            width: 52%;
+            text-align: justify;
+          }
+          .card-part {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include responsive(md) {
+  .container-resume {
+    @include mdmax;
+    #experiense,
+    #education {
+      .row-main {
+        .row {
+          justify-content: space-around;
+          .text-part {
+            width: 50%;
+            text-align: justify;
+          }
+          .card-part {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*----------------------------------------
+    Finish resume container responsive 
+    -----------------------------------------*/
+
+/*----------------------------------------
+    Start galley container responsive 
+    -----------------------------------------*/
+
+@include responsive(xs) {
+  .gallery-container {
+    padding: 5rem 0;
+    width: 100%;
+    margin: 0 auto;
+    .row.items {
+      padding-left: 12px;
+      span {
+        font-size: 0.9rem;
+        padding: 0 0.35rem;
+      }
+    }
+    .picture-container {
+      flex-wrap: wrap;
+      gap: 0;
+      .pic {
+        margin: 0 1rem 1rem;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@include responsive(sm) {
+  .gallery-container {
+    padding: 5rem 1rem;
+    @include mdmax;
+    .picture-container {
+      gap: 15px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include responsive(md) {
+  .gallery-container {
+    @include mdmax;
+    .picture-container {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include responsive(lg) {
+  .gallery-container {
+    @include lgmax;
+    .picture-container {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/*----------------------------------------
+    Finish galley container responsive 
+    -----------------------------------------*/
+
+/*----------------------------------------
+    start container work responsive 
+    -----------------------------------------*/
+
+@include responsive(768) {
+  .container-work {
+    .row-work {
+      width: 100%;
+      padding: 2.5rem 0;
+      h1 {
+        font-size: 1.4rem;
+      }
+      span {
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+/*----------------------------------------
+    start client container responsive 
+    -----------------------------------------*/
+
+@include responsive(768) {
+  .container-client-slider {
+    max-width: 76%;
+    margin: 0 auto;
+    .row-slider {
+      .text-part {
+        width: 100%;
+        text-align: justify;
+        i {
+          &:first-child {
+            display: none;
+          }
+        }
+      }
+      .image-part {
+        width: 100%;
+        margin: 0;
+        .backpart,
+        .top-image {
+          display: none;
+        }
+      }
+    }
+    .owl-nav {
+      bottom: 25px;
+    }
+    .authur {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+@include responsive(xxs) {
+  .container-client-slider {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}
+
+@include responsive(md) {
+  .container-client-slider {
+    @include mdmax;
+    .row-slide {
+      justify-content: space-between;
+      .text-part {
+        width: 50%;
+        i {
+          &:first-child {
+            top: 48px;
+            padding: 0 3px;
+          }
+        }
+      }
+      .image-part {
+        margin: 0;
+        .backpart,
+        .top-image {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@include responsive(lg) {
+  .container-client-slider {
+    @include lgmax;
+    .row-slide {
+      .text-part {
+        width: 44%;
+      }
+    }
+  }
+}
+
+/*----------------------------------------
+    Finish client container responsive 
+    -----------------------------------------*/
+
+/*----------------------------------------
+    Start news part responsive 
+    -----------------------------------------*/
+
+@include responsive(768) {
+  .container-news-part {
+    width: 100%;
+    max-width: none;
+    .row-new-main {
+      .text-part {
+        justify-content: flex-start;
+        margin: 0 14px;
+        @include size(100%, 100%);
+        h3 {
+          letter-spacing: 0;
+        }
+      }
+      .row-news-left-side {
+        .text-part {
+          order: 1;
+          .date-news {
+            z-index: 0;
+            .num {
+              order: 0;
+            }
+          }
+        }
+      }
+      .row-news-right-side {
+        .text-part {
+          .date-news {
+            z-index: 0;
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+  }
+  .container-news-part {
+    .row-new-main {
+      img {
+        width: 100%;
+      }
+    }
+    .row-news-right-side,
+    .row-news-left-side {
+      padding: 0 0.75rem;
+      .date-news {
+        margin: 10px 0;
+      }
+      .text-part {
+        flex-direction: unset;
+        .date {
+          margin: 0;
+        }
+      }
+      .news-information {
+        text-align: justify;
+      }
+    }
+  }
+}
+
+@include responsive(sm) {
+  .container-news-part {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@include responsive(md) {
+  .container-news-part {
+    @include mdmax;
+    .row-new-main {
+      .text-part {
+        width: 49%;
+        text-align: justify;
+        h3 {
+          letter-spacing: 0;
+        }
+      }
+      .image-part {
+        @include size(50%, 321px);
+        img {
+          @include size(100%, 100%);
+        }
+      }
+    }
+    .row-news-right-side {
+      .date-news {
+        margin: 0 0 0 -25px;
+      }
+    }
+    .row-news-left-side {
+      .date-news {
+        margin: 0 -25px 0 0;
+      }
+    }
+  }
+}
+
+@include responsive(lg) {
+  .container-news-part {
+    @include lgmax;
+    .news-information {
+      text-align: justify;
+    }
+    .row-new-main {
+      .text-part {
+        width: 47%;
+        text-align: justify;
+      }
+      .image-part {
+        width: 50%;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .row-news-right-side {
+      .date-news {
+        margin: 0 0 0 -50px;
+      }
+    }
+    .row-news-left-side {
+      .date-news {
+        margin: 0 -46px 0 0;
+      }
+    }
+  }
+}
+
+/*----------------------------------------
+    FInish news part responsive 
+    -----------------------------------------*/
+
+/*----------------------------------------
+    Start Form container responsive 
+    -----------------------------------------*/
+
+@include responsive(768) {
+  .container-form {
+    max-width: none;
+    margin: 0 0.5rem;
+    form {
+      input {
+        width: 100%;
+      }
+      .massege-area {
+        @include size(100%, 10rem);
+      }
+    }
+  }
+}
+
+@include responsive(sm) {
+  .container-form {
+    @include Xsmax(auto);
+  }
+}
+
+@include responsive(md) {
+  .container-form {
+    @include mdmax;
+    .massege-area {
+      @include size(97%, 10rem);
+    }
+  }
+}
+
+@include responsive(lg) {
+  .container-form {
+    @include lgmax;
+    .massege-area {
+      @include size(97%, 10rem);
+    }
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .container-form {
+    .massege-area {
+      @include size(97%, 10rem);
+    }
+  }
+}
+
+/*----------------------------------------
+    Finish Form container responsive 
+    -----------------------------------------*/

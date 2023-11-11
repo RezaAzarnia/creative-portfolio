@@ -1,0 +1,708 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/*--------------------------------------
+Start header responsive
+----------------------------------------*/
+@media screen and (max-width: 576.9px) {
+  header nav h3 {
+    display: none;
+  }
+  header nav li {
+    padding: 0 11px;
+  }
+  .container .banner .row {
+    -webkit-transform: translate(6%, 325%);
+            transform: translate(6%, 325%);
+  }
+  .container .banner h3,
+  .container .banner span.main-text {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 371.9px) {
+  .container .banner h3,
+  .container .banner span.main-text {
+    font-size: 1.9rem;
+  }
+}
+
+/*----------------------------------------
+     start container information responsive 
+    -----------------------------------------*/
+@media screen and (max-width: 576.9px) {
+  .container-information {
+    width: 100%;
+    padding: 7rem 0 1rem 0;
+  }
+  .container-information .row .image-part,
+  .container-information .row .text-part {
+    width: 100%;
+  }
+  .container-information .row .text-part {
+    margin-top: 1rem;
+  }
+  .container-information .row .image-part img {
+    width: 90%;
+  }
+  .container-information .owl-nav .owl-next {
+    top: -83px;
+    right: 13px;
+  }
+  .container-information .owl-nav .owl-prev {
+    top: -83px;
+    left: 13px;
+  }
+  .sliderLogo .item {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 371.9px) {
+  .container-information .owl-nav .owl-next {
+    top: -69px;
+    right: 13px;
+  }
+  .container-information .owl-nav .owl-prev {
+    top: -69px;
+    left: 12px;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 767.9px) {
+  .container-information .owl-nav .owl-next {
+    top: -69px;
+    right: -12px;
+  }
+  .container-information .owl-nav .owl-prev {
+    top: -69px;
+    left: -19px;
+  }
+  .sliderLogo .item {
+    width: 95%;
+  }
+  .container-information {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .container-information .row .image-part {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .container-information .row .image-part img {
+    width: 100%;
+  }
+  .container-information .row .text-part {
+    width: 100%;
+    margin: 1rem auto 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .sliderLogo .item {
+    width: 100%;
+  }
+  .container-information {
+    max-width: 668px;
+    margin: 0 auto;
+  }
+  .container-information .owl-nav .owl-next {
+    top: -63px;
+    right: -22px;
+  }
+  .container-information .owl-nav .owl-prev {
+    top: -63px;
+    left: -19px;
+  }
+  .container-information .row .image-part {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .container-information .row .image-part img {
+    width: 93%;
+  }
+  .container-information .row .text-part {
+    width: 95%;
+    margin: 1rem 0 auto;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200.9px) {
+  .sliderLogo .item {
+    width: 97%;
+  }
+  .container-information {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .container-information .row .image-part {
+    width: 39%;
+  }
+  .container-information .row .image-part img {
+    width: 95%;
+  }
+  .container-information .row .text-part {
+    width: 59%;
+  }
+}
+
+/*----------------------------------------
+   Finish container information responsive 
+    -----------------------------------------*/
+/*----------------------------------------
+   Start container personal responsive 
+    -----------------------------------------*/
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .container-personal {
+    width: auto;
+    margin: 0 6%;
+  }
+  .container-personal .information-part {
+    padding-bottom: 2rem;
+  }
+  .container-personal .row .information-part,
+  .container-personal .row .abilities {
+    width: 50%;
+  }
+  .container-personal .row .line-1,
+  .container-personal .row .line-2,
+  .container-personal .row .line-3,
+  .container-personal .row .line-4 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767.9px) {
+  .container-personal {
+    padding-bottom: 4rem;
+    width: auto;
+    margin: 0 6%;
+  }
+  .container-personal .information-part {
+    padding-bottom: 2rem;
+  }
+  .container-personal .row .information-part,
+  .container-personal .row .abilities,
+  .container-personal .row .line-1,
+  .container-personal .row .line-2,
+  .container-personal .row .line-3,
+  .container-personal .row .line-4 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 767.9px) {
+  .container-personal {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .container-personal {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200.9px) {
+  .container-personal {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .container-personal .line-1,
+  .container-personal .line-2,
+  .container-personal .line-3,
+  .container-personal .line-4 {
+    width: 100%;
+  }
+}
+
+/*----------------------------------------
+   Finish container personal responsive 
+    -----------------------------------------*/
+/*----------------------------------------
+   Start offer container responsive 
+    -----------------------------------------*/
+@media screen and (max-width: 576.9px) {
+  .offer-container {
+    padding: 2rem 0;
+  }
+  .offer-container .row-card .card {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 767.9px) {
+  .offer-container {
+    padding: 2rem 0;
+  }
+  .offer-container .row-card .card {
+    width: 97%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .offer-container .row-card {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .offer-container .card {
+    width: 97%;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200.9px) {
+  .offer-container .row-card {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .offer-container .card {
+    width: 98%;
+  }
+}
+
+/*----------------------------------------
+    Finish offer container responsive 
+    -----------------------------------------*/
+/*----------------------------------------
+    Start resume container responsive 
+    -----------------------------------------*/
+@media screen and (max-width: 767.9px) {
+  .container-resume .container-head {
+    padding: 4rem 0;
+  }
+  .container-resume .tabs {
+    padding-bottom: 5rem;
+  }
+}
+
+@media screen and (max-width: 534px) {
+  .container-resume {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .container-resume .tabs .tab.right,
+  .container-resume .tabs .tab.left {
+    padding: 18px 6%;
+  }
+  .container-resume #experiense .row-main .row .text-part,
+  .container-resume #education .row-main .row .text-part {
+    width: 93%;
+    margin-top: 20px;
+    text-align: justify;
+  }
+  .container-resume #experiense .row-main .row .card-part,
+  .container-resume #education .row-main .row .card-part {
+    margin: 0;
+    width: 95%;
+  }
+  .container-resume #experiense .row-main .row .card-part .box,
+  .container-resume #education .row-main .row .card-part .box {
+    width: 100%;
+  }
+  .container-resume #experiense .row-main .row .card-part .icon,
+  .container-resume #education .row-main .row .card-part .icon {
+    left: 41%;
+  }
+}
+
+@media screen and (min-width: 534px) and (max-width: 768px) {
+  .container-resume {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .container-resume #experiense .row-main .row,
+  .container-resume #education .row-main .row {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .container-resume #experiense .row-main .row .text-part,
+  .container-resume #education .row-main .row .text-part {
+    width: 52%;
+    text-align: justify;
+  }
+  .container-resume #experiense .row-main .row .card-part,
+  .container-resume #education .row-main .row .card-part {
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .container-resume {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .container-resume #experiense .row-main .row,
+  .container-resume #education .row-main .row {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .container-resume #experiense .row-main .row .text-part,
+  .container-resume #education .row-main .row .text-part {
+    width: 50%;
+    text-align: justify;
+  }
+  .container-resume #experiense .row-main .row .card-part,
+  .container-resume #education .row-main .row .card-part {
+    margin: 0;
+  }
+}
+
+/*----------------------------------------
+    Finish resume container responsive 
+    -----------------------------------------*/
+/*----------------------------------------
+    Start galley container responsive 
+    -----------------------------------------*/
+@media screen and (max-width: 576.9px) {
+  .gallery-container {
+    padding: 5rem 0;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .gallery-container .row.items {
+    padding-left: 12px;
+  }
+  .gallery-container .row.items span {
+    font-size: 0.9rem;
+    padding: 0 0.35rem;
+  }
+  .gallery-container .picture-container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 0;
+  }
+  .gallery-container .picture-container .pic {
+    margin: 0 1rem 1rem;
+  }
+  .gallery-container .picture-container .pic img {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 767.9px) {
+  .gallery-container {
+    padding: 5rem 1rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .gallery-container .picture-container {
+    gap: 15px;
+  }
+  .gallery-container .picture-container img {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .gallery-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .gallery-container .picture-container img {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200.9px) {
+  .gallery-container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .gallery-container .picture-container img {
+    width: 100%;
+  }
+}
+
+/*----------------------------------------
+    Finish galley container responsive 
+    -----------------------------------------*/
+/*----------------------------------------
+    start container work responsive 
+    -----------------------------------------*/
+@media screen and (max-width: 767.9px) {
+  .container-work .row-work {
+    width: 100%;
+    padding: 2.5rem 0;
+  }
+  .container-work .row-work h1 {
+    font-size: 1.4rem;
+  }
+  .container-work .row-work span {
+    letter-spacing: 1px;
+  }
+}
+
+/*----------------------------------------
+    start client container responsive 
+    -----------------------------------------*/
+@media screen and (max-width: 767.9px) {
+  .container-client-slider {
+    max-width: 76%;
+    margin: 0 auto;
+  }
+  .container-client-slider .row-slider .text-part {
+    width: 100%;
+    text-align: justify;
+  }
+  .container-client-slider .row-slider .text-part i:first-child {
+    display: none;
+  }
+  .container-client-slider .row-slider .image-part {
+    width: 100%;
+    margin: 0;
+  }
+  .container-client-slider .row-slider .image-part .backpart,
+  .container-client-slider .row-slider .image-part .top-image {
+    display: none;
+  }
+  .container-client-slider .owl-nav {
+    bottom: 25px;
+  }
+  .container-client-slider .authur {
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 371.9px) {
+  .container-client-slider {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .container-client-slider {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .container-client-slider .row-slide {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .container-client-slider .row-slide .text-part {
+    width: 50%;
+  }
+  .container-client-slider .row-slide .text-part i:first-child {
+    top: 48px;
+    padding: 0 3px;
+  }
+  .container-client-slider .row-slide .image-part {
+    margin: 0;
+  }
+  .container-client-slider .row-slide .image-part .backpart,
+  .container-client-slider .row-slide .image-part .top-image {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200.9px) {
+  .container-client-slider {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .container-client-slider .row-slide .text-part {
+    width: 44%;
+  }
+}
+
+/*----------------------------------------
+    Finish client container responsive 
+    -----------------------------------------*/
+/*----------------------------------------
+    Start news part responsive 
+    -----------------------------------------*/
+@media screen and (max-width: 767.9px) {
+  .container-news-part {
+    width: 100%;
+    max-width: none;
+  }
+  .container-news-part .row-new-main .text-part {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin: 0 14px;
+    width: 100%;
+    height: 100%;
+  }
+  .container-news-part .row-new-main .text-part h3 {
+    letter-spacing: 0;
+  }
+  .container-news-part .row-new-main .row-news-left-side .text-part {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  .container-news-part .row-new-main .row-news-left-side .text-part .date-news {
+    z-index: 0;
+  }
+  .container-news-part .row-new-main .row-news-left-side .text-part .date-news .num {
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+  }
+  .container-news-part .row-new-main .row-news-right-side .text-part .date-news {
+    z-index: 0;
+    margin: 10px 0;
+  }
+  .container-news-part .row-new-main img {
+    width: 100%;
+  }
+  .container-news-part .row-news-right-side,
+  .container-news-part .row-news-left-side {
+    padding: 0 0.75rem;
+  }
+  .container-news-part .row-news-right-side .date-news,
+  .container-news-part .row-news-left-side .date-news {
+    margin: 10px 0;
+  }
+  .container-news-part .row-news-right-side .text-part,
+  .container-news-part .row-news-left-side .text-part {
+    -webkit-box-orient: unset;
+    -webkit-box-direction: unset;
+        -ms-flex-direction: unset;
+            flex-direction: unset;
+  }
+  .container-news-part .row-news-right-side .text-part .date,
+  .container-news-part .row-news-left-side .text-part .date {
+    margin: 0;
+  }
+  .container-news-part .row-news-right-side .news-information,
+  .container-news-part .row-news-left-side .news-information {
+    text-align: justify;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 767.9px) {
+  .container-news-part {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .container-news-part {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .container-news-part .row-new-main .text-part {
+    width: 49%;
+    text-align: justify;
+  }
+  .container-news-part .row-new-main .text-part h3 {
+    letter-spacing: 0;
+  }
+  .container-news-part .row-new-main .image-part {
+    width: 50%;
+    height: 321px;
+  }
+  .container-news-part .row-new-main .image-part img {
+    width: 100%;
+    height: 100%;
+  }
+  .container-news-part .row-news-right-side .date-news {
+    margin: 0 0 0 -25px;
+  }
+  .container-news-part .row-news-left-side .date-news {
+    margin: 0 -25px 0 0;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200.9px) {
+  .container-news-part {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .container-news-part .news-information {
+    text-align: justify;
+  }
+  .container-news-part .row-new-main .text-part {
+    width: 47%;
+    text-align: justify;
+  }
+  .container-news-part .row-new-main .image-part {
+    width: 50%;
+  }
+  .container-news-part .row-new-main .image-part img {
+    width: 100%;
+  }
+  .container-news-part .row-news-right-side .date-news {
+    margin: 0 0 0 -50px;
+  }
+  .container-news-part .row-news-left-side .date-news {
+    margin: 0 -46px 0 0;
+  }
+}
+
+/*----------------------------------------
+    FInish news part responsive 
+    -----------------------------------------*/
+/*----------------------------------------
+    Start Form container responsive 
+    -----------------------------------------*/
+@media screen and (max-width: 767.9px) {
+  .container-form {
+    max-width: none;
+    margin: 0 0.5rem;
+  }
+  .container-form form input {
+    width: 100%;
+  }
+  .container-form form .massege-area {
+    width: 100%;
+    height: 10rem;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 767.9px) {
+  .container-form {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .container-form {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .container-form .massege-area {
+    width: 97%;
+    height: 10rem;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200.9px) {
+  .container-form {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .container-form .massege-area {
+    width: 97%;
+    height: 10rem;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .container-form .massege-area {
+    width: 97%;
+    height: 10rem;
+  }
+}
+
+/*----------------------------------------
+    Finish Form container responsive 
+    -----------------------------------------*/
+/*# sourceMappingURL=responsive.css.map */
