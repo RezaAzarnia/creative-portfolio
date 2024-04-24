@@ -1,0 +1,9 @@
+# Sass extra files
+.sass-cache/
+/styles/*.css.map
+/styles/*.css
+/styles/*.css.map-*
+/styles/*.css.map-*.css
+/styles/*.css.map-*.css.map
+/styles/*.scssc
+/styles/*.cssc

@@ -1,170 +1,66 @@
-    @mixin overall {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: sans-serif;
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex(
+  $direction: null,
+  $wrap: null,
+  $justify: null,
+  $align: null,
+  $gap: null
+) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+@mixin grid($column: null, $rows: null, $gap: null) {
+  display: grid;
+  grid-template-columns: $column;
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+@mixin textFormat(
+  $fontSize: null,
+  $color: null,
+  $transform: null,
+  $cursor: null
+) {
+  font-size: $fontSize;
+  color: $color;
+  text-transform: $transform;
+  cursor: $cursor;
+}
+
+@mixin position(
+  $postion,
+  $top: null,
+  $right: null,
+  $left: null,
+  $bottom: null
+) {
+  position: $postion;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
+@mixin breakpoint($mode) {
+  @if ($mode== "phone-size") {
+    @media screen and (max-width: 576px) {
+      @content;
     }
-    
-    @mixin size($width, $height) {
-        width: $width;
-        height: $height;
+  } @else if($mode== "tablet-size") {
+    @media screen and (max-width: 768px) {
+      @content;
     }
-    
-    @mixin interval($margin, $padding) {
-        margin: $margin;
-        padding: $padding;
+  } @else if($mode== "large-phone") {
+    @media screen and (max-width: 990px) {
+      @content;
     }
-    
-    @mixin fontStyle($fontSize, $fontWeight, $color, $textTransform) {
-        font-size: $fontSize;
-        font-weight: $fontWeight;
-        color: $color;
-        text-transform: $textTransform;
-    }
-    
-    @mixin flex($justify, $align) {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: $justify;
-        align-items: $align;
-    }
-    
-    @mixin maxWidth {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-    
-    @mixin position ($postion, $top, $left, $right) {
-        position: $postion;
-        top: $top;
-        left: $left;
-        right: $right;
-    }
-    
-    @mixin line {
-        @include size(490px, 8px);
-        background-color: #e8e8e8;
-        position: relative;
-        margin: 1rem 0 4rem 0;
-    }
-    
-    @mixin after($width, $color) {
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: $width;
-            height: 100%;
-            background-color: $color;
-        }
-    }
-    
-    @mixin button {
-        background: #ffa700;
-        padding: 0.875rem 2.4rem;
-        border-radius: 44px;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        border: none;
-        cursor: pointer;
-        @include fontStyle(1.2rem, normal, #ffff, capitalize);
-        &::before {
-            content: "";
-            @include position(absolute, -55px, 0, none);
-            z-index: -1;
-            @include size(100%, 100%);
-            background-color: #000;
-            transition: 0.5s;
-            color: #fff;
-        }
-        &:hover::before,
-        &:focus::before {
-            top: 0;
-            color: #fff;
-        }
-    }
-    
-    @mixin containerHead {
-        h1 {
-            font-style: italic;
-            line-height: 1.5;
-            @include fontStyle(3rem, bold, #1d1c1c, capitalize);
-        }
-        span {
-            @include fontStyle(0.875rem, normal, #a48c8b, capitalize);
-        }
-        @include responsive(xs) {
-            h1 {
-                font-size: 2rem;
-            }
-        }
-    }
-    
-    @mixin responsive ($size) {
-        @if($size==xxs) {
-            @media screen and (max-width: 371.9px) {
-                @content;
-            }
-        }
-        @else if($size==xs) {
-            @media screen and (max-width: 576.9px) {
-                @content;
-            }
-        }
-        @else if($size==sm) {
-            @media screen and (min-width: 577px) and (max-width: 767.9px) {
-                @content;
-            }
-        }
-        @else if($size==768) {
-            @media screen and (max-width: 767.9px) {
-                @content;
-            }
-        }
-        @else if($size==md) {
-            @media screen and (min-width: 768px) and (max-width: 991.9px) {
-                @content;
-            }
-        }
-        @else if ($size==lg) {
-            @media screen and (min-width: 992px) and (max-width: 1200.9px) {
-                @content;
-            }
-        }
-    }
-    
-    @mixin size_2($width, $margin) {
-        width: $width;
-        margin: $margin;
-    }
-    
-    @mixin owls($top1, $right1, $left1) {
-        .owl-nav {
-            .owl-next {
-                top: $top1;
-                right: $right1;
-            }
-            .owl-prev {
-                top: $top1;
-                left: $left1;
-            }
-        }
-    }
-    
-    @mixin Xsmax($mar) {
-        max-width: 540px;
-        margin: 0 $mar;
-    }
-    
-    @mixin mdmax {
-        max-width: 720px;
-        margin: 0 auto;
-    }
-    
-    @mixin lgmax {
-        max-width: 960px;
-        margin: 0 auto;
-    }
+  }
+}

@@ -1,1133 +1,776 @@
-@import"mixins";
-@import"variables";
+@import "mixins";
+@import "variables";
+
 * {
-    @include overall;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+}
+// global styles
+ul {
+  list-style-type: none;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.button {
+  background: $yellow;
+  padding: 0.875rem 2.4rem;
+  border-radius: 44px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+  @include textFormat(1rem, $white, capitalize);
+  &::before {
+    content: "";
+    @include position(absolute, $top: -50px, $left: 0);
+    @include size(100%, 100%);
+    z-index: -1;
+    background-color: $black;
+    transition: 0.5s;
+    color: $white;
+  }
+}
+.button {
+  &:hover::before,
+  &:focus::before {
+    top: 0;
+    color: $white;
+  }
+  i.fa-arrow-right {
+    margin-left: 5px;
+  }
+}
+.section-header {
+  text-align: center;
+  line-height: 1.3;
+  padding-bottom: 30px;
+  font-style: italic;
+  .section-title {
+    @include textFormat(
+      $fontSize: 48px,
+      $color: #030303,
+      $transform: capitalize
+    );
+    font-style: italic;
+  }
+  .section-subtitle {
+    @include textFormat(
+      $fontSize: 0.875rem,
+      $color: #988181,
+      $transform: capitalize
+    );
+  }
+}
+.modal-overlay {
+  @include position(fixed, $top: 0, $left: 0, $right: 0);
+  @include size(100%, 100%);
+  background-color: rgb(3 3 3 / 54%);
+  z-index: 3;
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+#modalContainer {
+  @include position(fixed, $top: 50%, $left: 50%);
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 4;
+  transition: all 0.5s;
+  img {
+    width: 100%;
+  }
+  &.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  #close-modal-btn {
+    @include position(absolute, $top: -31px, $left: -3px);
+    @include textFormat(1.55rem, $color: $white, $cursor: pointer);
+    background: $yellow;
+    border-radius: 3px;
+    padding: 0px 5px;
+    margin: 0 3px;
+  }
+}
 
 /* ---------------------------------
-                                                                                                                                                                                                                   start header section
-                                                                                                                                                                                                                  -----------------------------------*/
+  header section
+ -----------------------------------*/
 
 header {
-    transition: all 0.5s;
-    @include position(fixed, 0, 0, 0);
-    z-index: 2;
-    nav {
-        @include flex(space-around, center);
-        padding: 31px 0;
-    }
+  transition: all 0.5s;
+  @include position(fixed, $top: 0, $right: 0, $left: 0);
+  z-index: 2;
+  nav {
+    @include flex($wrap: wrap, $justify: space-around, $align: center);
+    padding: 30px 0;
+  }
 }
 
 header.sticky {
-    background-color: #ffff;
-    transition: all 0.5s ease-in;
-    box-shadow: 12px 2px 19px #7a7a7a;
-    nav {
-        padding: 11px 0;
-    }
+  background-color: $white;
+  box-shadow: 12px 2px 19px #7a7a7a;
+  nav {
+    padding: 10px 0;
+  }
 }
 
-header {
-    ul {
-        display: flex;
-        list-style: none;
-        padding: 8px;
-        h3 {
-            @include fontStyle(1rem, 400, #000, capitalize);
-            &:first-child {
-                padding-right: 10px;
-            }
-        }
-        li {
-            padding: 0 16px;
-            position: relative;
-        }
+.icons-list {
+  @include flex($gap: 25px);
+  padding: 8px;
+  .icons-list-item {
+    position: relative;
+    @include textFormat($fontSize: 1rem, $color: $black, $cursor: pointer);
+    &:hover i {
+      color: $yellow;
+      transition: all 0.4s ease;
     }
+  }
 }
 
-li {
-    a {
-        color: #000;
-        i {
-            font-size: 0.89rem;
-            transition: 0.4s ease-in;
-        }
-        .fa.fa-dribbble {
-            font-weight: 600;
-        }
-        &:hover i {
-            color: $bgcolor;
-            transition: 0.5s ease-in-out;
-        }
-    }
+.icons-list span.follow-text {
+  @include textFormat($fontSize: 1rem, $transform: capitalize);
 }
-
+.hamburger-menu {
+  @include textFormat($fontSize: 24px, $cursor: pointer);
+}
 
 /* ---------------------------------
-                                                                                                                                                                                                                  sideBar section
-                                                                                                                                                                                                                 -----------------------------------*/
+  sideBar section
+ -----------------------------------*/
 
 .side-bar {
-    @include size(0, 100%);
-    @include position(fixed, 0, none, 0);
-    background-color: #fff;
-    transition: all 0.5s ease-in;
-    overflow-x: hidden;
-    z-index: 3;
-    box-shadow: -13px 0 41px #beb9b9;
-    .closebtn {
-        @include fontStyle(2rem, 500, #000, none);
-        @include position(absolute, 0, 12px, none);
-    }
-    .logo {
-        margin-top: 2rem;
-    }
-    a {
-        display: block;
-        padding: 17px 0px 11px;
-        text-decoration: none;
-        color: #000;
-        text-align: center;
-        background: transparent;
-        cursor: pointer;
-        transition: all 0.5s ease-in;
-    }
+  @include position(fixed, $right: -225px, $top: 0, $bottom: 0);
+  @include size(225px, 100%);
+  box-shadow: -3px 1px 9px gray;
+  background-color: $white;
+  transition: all 0.5s;
+  z-index: 3;
+  overflow-x: hidden;
+  .close-sidebar-btn {
+    @include textFormat($fontSize: 2rem, $color: $black, $cursor: pointer);
+    @include position(absolute, $top: 0, $left: 12px);
+  }
+  &.active {
+    right: 0;
+  }
 }
-
-.open-menu {
-    font-size: 24px;
+.side-bar-list {
+  @include flex($direction: column, $align: center);
+  margin-top: 32px;
+  text-align: center;
+  .side-bar-item {
     cursor: pointer;
+    padding: 12px 0;
+  }
 }
 
-.dropdown-container {
-    display: none;
-    .drop-item {
-        @include fontStyle(0.79rem, 400, gray, capitalize);
-        padding: 0 0 7px;
-    }
-}
-
-.dropdown-container.active {
+.dropdown-list {
+  display: none;
+  &.active {
     display: block;
+  }
+}
+.dropdown-item {
+  @include textFormat(
+    $fontSize: 12px,
+    $color: gray,
+    $transform: capitalize,
+    $cursor: pointer
+  );
+  padding: 5px 0;
+  &:hover {
+    color: $black;
+  }
 }
 
-
 /* ---------------------------------
-                                                                                                                                                                                                                  finish header section
-                                                                                                                                                                                                                    -----------------------------------*/
+ banner section
+  ----------------------------------*/
 
-
-/* ---------------------------------
-                                                                                                                                                                                                                  start banner section
-                                                                                                                                                                                                                    ----------------------------------*/
-
-.container {
-    .banner {
-        background-image: url(../images/banner-1.jpg);
-        position: relative;
-        padding-bottom: 630px;
-        @include size(100%, 100%);
-        background-position: center;
-        overflow-x: hidden;
-        .row {
-            @include size(100%, 100%);
-            @include flex(flex-start, center);
-            transform: translate(10%, 273%);
-        }
+.banner {
+  @include size(100%, 100vh);
+  @include grid($column: repeat(2, 1fr), $rows: repeat(3, 1fr));
+  justify-items: center;
+  align-items: flex-end;
+  overflow: hidden;
+  .banner-image {
+    @include size(100%, 100%);
+    grid-column: 1 / 3;
+    grid-row: 1 / 4;
+    img {
+      @include size(100%, 100%);
     }
+  }
+}
+.banner .row {
+  grid-column: 1;
+  grid-row: 2 / 3;
 }
 
+.banner-text .type-writer-text {
+  @include textFormat($fontSize: 3rem, $color: $black);
+  span {
+    text-transform: capitalize;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      right: -10px;
+      background-color: $black;
+      animation: type 0.5s linear infinite;
+    }
+  }
+}
 .banner-text {
-    h3 {
-        &:first-child {
-            text-transform: capitalize;
-        }
-        @include fontStyle(3rem, 600, $txtcolor, normal);
-        span {
-            text-transform: uppercase;
-            color: $txtcolor;
-        }
-    }
-    .sub-main-text {
-        @include fontStyle(0.875rem, 200, #454545, capitalize);
-    }
+  .sub-main-text {
+    @include textFormat(
+      $fontSize: 13px,
+      $color: #454545,
+      $transform: capitalize
+    );
+  }
 }
-
-
+@keyframes type {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* ---------------------------------
-                                                                                                                                                                                                                     Finish banner section
-                                                                                                                                                                                                                -----------------------------------*/
+  information part
+  -----------------------------------*/
 
-
-/* ---------------------------------
-                                                                                                                                                                                                                    start information part
-                                                                                                                                                                                                                  -----------------------------------*/
-
-.container-information {
-    padding: 7rem 0 4rem 0;
-    .header-part {
-        text-align: center;
-        line-height: 1.2;
-        padding-bottom: 4rem;
-        h4 {
-            @include fontStyle(2.5rem, 600, #030303, capitalize);
-            font-style: italic;
-        }
-        span {
-            @include fontStyle(0.875rem, 200, #988181, capitalize);
-        }
-    }
-}
-
-.container-information {
-    max-width: 1300px;
-    margin: 0 auto;
-    .row {
-        @include flex(flex-start, center);
-        .image-part {
-            width: 43%;
-            position: relative;
-            text-align: center;
-            img {
-                width: 80%;
-                background: $darkgray;
-                border-radius: 50%;
-                padding: 0 3rem;
-            }
-        }
-    }
-}
-
-.text-part {
-    width: 50%;
-    .text-container {
-        display: flex;
-        position: relative;
-        i {
-            font-size: 2.5rem;
-            color: $darkgray;
-            @include position(absolute, -13px, -7px, 0);
-        }
-    }
-}
-
-.text-information {
-    margin: 0 0 0 2.5rem;
-    blockquote {
-        @include fontStyle(0.875rem, normal, #434343, initial);
-        line-height: 1.5;
-    }
-    .signature {
-        padding: 2rem 0 3rem;
-    }
-}
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                 start slider part changes
-                                                                                                                                                                                                                -----------------------------------*/
-
-.sliderLogo {
-    .item {
-        width: 190px;
-    }
-    .owl-nav {
-        position: relative;
-        .owl-prev {
-            @include position(absolute, -62px, -27px, none);
-            span {
-                font-size: 3rem;
-            }
-        }
-        .owl-next {
-            @include position(absolute, -62px, none, -12px);
-            span {
-                font-size: 3rem;
-            }
-        }
-    }
-}
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                    Finish slider part changes
-                                                                                                                                                                                                                -----------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                     start personal information
-                                                                                                                                                                                                                  -----------------------------------*/
-
-.container-personal {
-    padding-bottom: 8rem;
-    @include maxWidth;
-    .row {
-        @include flex(center, none);
-        .information-part {
-            width: 50%;
-            p {
-                &:first-child {
-                    padding: 2rem 0 1.3rem 0;
-                }
-                padding: 1.3rem 0;
-                @include fontStyle(1rem, normal, $bgcolor, capitalize);
-                font-style: italic;
-                span {
-                    color: $txtcolor;
-                }
-            }
-        }
-    }
-}
-
-.abilities {
-    width: 44%;
-    .line-1,
-    .line-2,
-    .line-3,
-    .line-4 {
-        @include line;
-    }
-    .info-row {
-        display: flex;
-        justify-content: space-between;
-    }
-    .line-1 {
-        @include after(75%, $bgcolor);
-    }
-    .line-2 {
-        @include after(85%, $bgcolor);
-    }
-    .line-3 {
-        @include after(90%, $bgcolor);
-    }
-    .line-4 {
-        @include after(65%, $bgcolor);
-    }
-}
-
-.download-button {
-    .btn-download {
-        @include button;
-    }
-}
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                    finish personal information
-                                                                                                                                                                                                                  ----------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                   Finish information part
-                                                                                                                                                                                                                 ---------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                 start  offer section
-                                                                                                                                                                                                          ----------------------------------*/
-
-.offer-container {
-    background: $darkgray;
-    padding: 9rem 0 4rem 0;
-    .offer-header {
-        text-align: center;
-        padding-bottom: 3rem;
-        @include containerHead;
-    }
-}
-
-.offer-container {
-    .row-card {
-        @include flex(center, center);
-        max-width: 1150px;
-        margin: 0 auto;
-        .owl-stage {
-            padding-top: 50px;
-        }
-    }
-}
-
-.row-card {
-    .card {
-        @include size(367px, 238px);
-        background-color: $white;
-        .card-icon {
-            position: relative;
-            .icon {
-                @include position(absolute, -32px, 43%, 0);
-                @include size(70px, 70px);
-                background: $white;
-                border-radius: 50%;
-                transition: all 0.5s ease-in;
-                i {
-                    margin: 22px 25px;
-                    font-size: 1.4rem;
-                    transition: all 0.5s ease-in;
-                }
-                .fa-wordpress,
-                .fa-code,
-                .fa-user-circle {
-                    margin: 24px;
-                }
-            }
-        }
-        .card-header {
-            h3 {
-                padding: 4rem 36px 1rem 2.5rem;
-                transition: all 0.5s ease-in;
-                @include fontStyle(1.1rem, 600, #616161, capitalize);
-            }
-        }
-        .card-body {
-            p {
-                line-height: 1.8;
-                padding: 0.5rem 45px 0rem 2.5rem;
-                @include fontStyle(0.85rem, normal, #272727, capitalize);
-            }
-        }
-    }
-}
-
-.card {
-    &:hover {
-        .card-header {
-            h3 {
-                color: $bgcolor;
-            }
-        }
-        .card-icon {
-            .icon {
-                background-color: $bgcolor;
-            }
-            i {
-                color: $white;
-            }
-        }
-    }
-}
-
-.row-card {
-    .owl-nav {
-        margin: 3rem 0;
-        button.owl-prev,
-        button.owl-next {
-            margin: 0.25rem;
-            @include size(27px, 28px);
-            background: $txtcolor;
-            border-radius: 50%;
-            transition: all 0.2s ease-in;
-            &:hover {
-                background-color: $bgcolor;
-                color: $txtcolor;
-            }
-            span {
-                @include fontStyle(1.5rem, bold, $white, none);
-            }
-        }
-    }
-}
-
-
-/* ------------------------                                                                                                              start  gallery section
-                                                                                                                                                                                                                 -----------------------------------*/
-
-.gallery-container {
-    padding: 9rem 0 8rem;
-    .gallery-header {
-        text-align: center;
-        padding-bottom: 5rem;
-        @include containerHead;
-    }
-}
-
-.gallery-container {
-    max-width: 1140px;
-    margin: 0 auto;
-    .row {
-        padding: 0 0 20px 0;
-        .tabs {
-            @include fontStyle(1.2rem, normal, #272727, capitalize);
-            font-style: italic;
-            padding: 1rem;
-            cursor: pointer;
-        }
-    }
-    .pic.hide {
-        display: none;
-    }
-    .pic.show {
-        display: block;
-        animation: animate 0.5s ease-in;
-        transition: all 0.5s ease-in;
-    }
-}
-
-.gallery-container {
-    .tabs.active {
-        background: #ffa700;
-        padding: 11px;
-        border-radius: 5px;
-        color: #fff
-    }
-}
-
-.gallery-container {
-    .view-button {
-        text-align: center;
-        .btn-view {
-            text-transform: capitalize;
-            @include button;
-            i {
-                margin-left: 5px;
-            }
-        }
-    }
-}
-
-@keyframes animate {
-    0% {
-        transform: scale(0.2);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                 start  picture edit 
-                                                                                                                                                                                                                -----------------------------------*/
-
-.picture-container {
-    display: flex;
-    gap: 30px;
-    .pic.graphic {
-        display: none;
-    }
-    .pic {
-        margin: 0 0 17px;
-        position: relative;
-        .up-side {
-            @include position(absolute, 0, 0, none);
-            @include size(39%, 45%);
-            background-color: #ffa70063;
-            opacity: 0;
-            transition: 0.75s;
-        }
-        // &:hover .up-side {
-        //     @include size(100%, 99%);
-        //     opacity: 1;
-        // }
-        .down-side {
-            @include size(39%, 45%);
-            @include position(absolute, none, none, 0);
-            bottom: 3px;
-            background: #ffa6006b;
-            transition: 0.9s;
-            opacity: 0;
-            z-index: 1;
-        }
-        // &:hover .down-side {
-        //     opacity: 1;
-        //     @include size(100%, 99%);
-        //     transition-delay: 0.2s;
-        // }
-    }
-}
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                 End  picture edit 
-                                                                                                                                                                                                                 -----------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                 start  picture link Edit 
-                                                                                                                                                                                                                -----------------------------------*/
-
-.picture-container {
-    .pic {
-        position: relative;
-        .link-picture {
-            @include position(absolute, 34%, 0, 0);
-            z-index: 2;
-            transition: 0.8s;
-            opacity: 0;
-        }
-        a {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            text-decoration: none;
-            @include fontStyle(1.5rem, normal, #fff, capitalize);
-            i {
-                padding-bottom: 10px;
-                font-size: 2rem;
-            }
-        }
-        &:hover .link-picture {
-            top: 40%;
-            opacity: 1;
-            transition-delay: 0.4s;
-        }
-    }
-}
-
-//picture modal 
-.picture-container {
-    #modalContainer {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
+.aboutMe-section {
+  margin: 70px auto;
+  .row {
+    @include flex($align: center);
+    .image-part {
+      width: 50%;
+      img {
         width: 100%;
-        height: 100%;
-        text-align: center;
-        z-index: 2;
-        background: #000000bf;
-        padding-top: 7rem;
-        animation: tab 0.5s ease-in;
-        img {
-            border-radius: 15px;
-        }
-        #exit {
-            position: absolute;
-            color: #ffff;
-            font-size: 1.55rem;
-            top: 82px;
-            background: $bgcolor;
-            border-radius: 3px;
-            padding: 0 10px;
-            margin: 0 3px;
-            cursor: pointer;
-        }
+        max-width: 460px;
+        margin: auto;
+        padding: 0 3rem;
+        background: $darkgray;
+        border-radius: 50%;
+      }
     }
+  }
+}
+.aboutMe-section .text-part {
+  width: 50%;
+  blockquote {
+    @include textFormat($fontSize: 1rem, $color: #434343);
+    line-height: 2.5;
+    text-align: justify;
+  }
+  .signature {
+    padding: 2rem 0 3rem;
+  }
+}
+.sliderLogo .owl-nav {
+  span {
+    font-size: 30px;
+  }
+  .owl-prev {
+    @include position(absolute, $top: 50%, $left: -20px);
+    transform: translate(8px, -80%);
+  }
+  .owl-next {
+    @include position(absolute, $top: 50%, $right: -20px);
+    transform: translate(-8px, -80%);
+  }
+}
+
+/* ---------------------------------
+    personal information
+  ----------------------------------*/
+
+.personal-info-section {
+  .row {
+    @include flex($justify: flex-end, $gap: 10px);
+  }
+}
+.information-list {
+  width: 45%;
+  .info-list-item {
+    padding: 23px 0;
+    @include textFormat(16px, $yellow, capitalize);
+    font-style: italic;
+    span {
+      color: $black;
+    }
+  }
+}
+.abilities {
+  width: 45%;
+  .progress-bar {
+    @include size(100%, 8px);
+    background-color: #e8e8e8;
+    position: relative;
+    margin: 1rem 0 4rem 0;
+    &::after {
+      content: "";
+      @include position(absolute, $top: 0, $right: 0, $left: 0);
+      height: 100%;
+      background-color: $yellow;
+    }
+  }
+}
+.abilities .info-row {
+  @include flex($justify: space-between);
+}
+.progress-bar {
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  &.progress-bar-1::after {
+    width: 75%;
+  }
+  &.progress-bar-2::after {
+    width: 80%;
+  }
+  &.progress-bar-3::after {
+    width: 75%;
+  }
+  &.progress-bar-4::after {
+    width: 90%;
+  }
+}
+.download-button {
+  text-align: center;
+}
+
+/* ---------------------------------
+  offer section
+ ----------------------------------*/
+
+.offer-container {
+  margin-top: 100px;
+  background: $darkgray;
+  padding: 5rem 0;
+  min-height: 600px;
+  width: 100%;
+  .row-card {
+    @include flex($justify: center, $align: center);
+    .owl-stage {
+      padding-top: 50px;
+    }
+  }
+}
+.row-card .card {
+  width: 100%;
+  min-height: 240px;
+  background-color: $white;
+  padding: 20px;
+  line-height: 2;
+  @include flex($direction: column, $justify: center, $gap: 10px);
+}
+.row-card .card-icon {
+  @include size(70px, 70px);
+  @include position(absolute, $top: -30px, $right: 0, $left: 0);
+  border-radius: 50%;
+  background: $white;
+  margin: auto;
+  transition: all 0.3s;
+  .icon {
+    @include flex($align: center, $justify: center);
+    font-size: 24px;
+    height: 100%;
+  }
+}
+.row-card .card {
+  .card-header {
+    transition: all 0.3s;
+    @include textFormat(1.1rem, #616161, capitalize);
+  }
+  .card-body {
+    @include textFormat(0.85rem, #272727, capitalize);
+  }
+}
+.row-card .card:hover {
+  .card-header {
+    color: $yellow;
+  }
+  .card-icon {
+    background-color: $yellow;
+    color: $white;
+  }
+}
+.row-card .owl-nav {
+  position: absolute;
+  bottom: -50px;
+  @include flex($gap: 5px);
+  button span {
+    @include size(30px, 30px);
+    @include textFormat(1.2rem, $white);
+    @include flex($align: center, $justify: center);
+    background: $black;
+    border-radius: 50%;
+    transition: all 0.2s;
+    &:hover {
+      background-color: $yellow;
+    }
+  }
+}
+
+/* -------------------------------   
+gallery part                                                                                                           start  gallery section
+-----------------------------------*/
+.gallery-container {
+  padding: 6rem 0;
+  .gallery-pictures.show {
+    display: block !important;
+    animation: zoom 0.5s ease-in;
+  }
+  .gallery-pictures.hide {
+    display: none;
+  }
+}
+.gallery-container .tabpane-list {
+  margin: 30px 0 10px;
+  @include flex($align: center);
+  overflow: auto;
+  .tabpane-list-item {
+    @include textFormat(1.2rem, #272727, capitalize, $cursor: pointer);
+    padding: 1rem;
+    font-style: italic;
+    &.active {
+      background: $yellow;
+      padding: 12px;
+      border-radius: 5px;
+      color: $white;
+    }
+  }
+}
+.gallery-container .view-button {
+  text-align: center;
+  margin-top: 30px;
+}
+.gallery-pictures-wrapper {
+  @include grid($column: repeat(2, 1fr), $gap: 20px);
+  .gallery-pictures {
+    padding: 10px 0;
     .pictures {
-        cursor: pointer;
+      cursor: pointer;
+      width: 100%;
+      object-fit: fill;
     }
+  }
+}
+@keyframes zoom {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-
 /* ---------------------------------
-                                                                                                                                                                                                                      End  picture link Edit 
-                                                                                                                                                                                                                  -----------------------------------*/
+   work together
+-----------------------------------*/
 
-
-/* ---------------------------------
-                                                                                                                                                                                                                   Start  work together 
-                                                                                                                                                                                                                -----------------------------------*/
-
-.container-work {
-    background-color: $darkgray;
-    .row-work {
-        @include maxWidth;
-        text-align: center;
-        padding: 7.5rem 0;
-        h1 {
-            @include fontStyle(3rem, bold, #1d1c1c, capitalize);
-            font-style: italic;
-            margin: 2rem;
-        }
-        span {
-            @include fontStyle(0.875rem, normal, $spancolor, capitalize);
-            letter-spacing: 2px;
-            font-style: italic;
-        }
-        .hire-button {
-            text-transform: capitalize;
-            margin: 2rem 0 0rem 0;
-            text-align: center;
-            .btn-hire {
-                @include button;
-                i {
-                    margin-left: 5px;
-                }
-            }
-        }
+.cooperate-wrraper {
+  background-color: $darkgray;
+  .row {
+    height: 420px;
+    @include flex($direction: column, $justify: center, $align: center);
+    span {
+      @include textFormat(14px, $spancolor, capitalize);
+      letter-spacing: 2px;
+      font-style: italic;
     }
+    .section-header {
+      line-height: 2;
+    }
+  }
 }
 
-
 /* ---------------------------------
-                                                                                                                                                                                                                      end work together 
-                                                                                                                                                                                                                 -----------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                  Start Resume part 
-                                                                                                                                                                                                                -----------------------------------*/
+  Resume part
+-----------------------------------*/
 
 .container-resume {
-    .container-head {
-        padding: 6rem 0 3rem;
-        @include containerHead;
-    }
+  margin-top: 64px;
 }
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                    Start tab pane buttons
-                                                                                                                                                                                                                  -----------------------------------*/
-
-.container-resume {
-    @include maxWidth;
+.resume-tabpane-list {
+  @include flex($justify: center);
+  margin-top: 30px;
+  .resume-tabpane-list-item {
+    background: #e6e3e3bf;
+    border-radius: 50px;
+    padding: 18px;
+    width: 100%;
+    max-width: 181px;
     text-align: center;
-    .tabs {
-        padding-bottom: 7rem;
-        .tab.left {
-            background: #e6e3e3bf;
-            border-radius: 50px;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-            @include interval(0 0, 18px 42px);
-        }
-        .tab.right {
-            background: #e6e3e3bf;
-            padding: 18px 42px;
-            border-radius: 50px;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0
-        }
-        .tab.active {
-            background-color: $bgcolor;
-            color: #fff;
-        }
-        a {
-            cursor: pointer;
-        }
-    }
-    [data-tab-content] {
-        display: none;
-    }
-    .active[data-tab-content] {
-        display: block;
-        animation: tab 0.5s ease-in;
-    }
+    cursor: pointer;
+  }
+}
+.resume-tabpane-list-item {
+  &:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  &:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  &.active {
+    background-color: $yellow;
+    color: $white;
+  }
+}
+.resume-content {
+  display: none;
+  margin-top: 60px;
+  &.active {
+    display: block;
+    animation: tab 0.5s;
+  }
 }
 
 @keyframes tab {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-
-/* ---------------------------------
-                                                                                                                                                                                                                     End tab pane buttons
-                                                                                                                                                                                                                   -----------------------------------*/
-
-
-/* ---------------------------------                                                                                                                                                                                               
-                                                                                                                                                                                                                         Start tab pane boxes
-                                                                                                                                                                                                                          -----------------------------------*/
-
-.container-resume {
-    .resume-tabcontent {
-        display: flex;
-        flex-direction: column;
+.resume-card {
+  @include grid($column: 25% 45%, $gap: 50px);
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+  .date-box {
+    @include flex($justify: center, $align: center);
+    @include size(100%, 160px);
+    position: relative;
+    border: 2px solid $yellow;
+    .card-icon {
+      @include position(absolute, $top: -29px);
+      @include textFormat(24px, $white);
+      @include flex($justify: center, $align: center);
+      @include size(50px, 50px);
+      background: $yellow;
+      padding: 5px 0;
+      border-radius: 5px;
+      text-align: center;
     }
-    #experiense,
-    #education {
-        .row-main {
-            display: flex;
-            flex-direction: column;
-        }
-        .row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 30px 0;
-            .card-part {
-                margin: 0 100px 0 0;
-            }
-            .box {
-                @include size(256px, 154px);
-                border: 2px solid $bgcolor;
-                .card-icon {
-                    position: relative;
-                    .icon {
-                        background: #ffb220;
-                        @include position(absolute, -26px, 100px, none);
-                        @include size(56px, 56px);
-                        border-radius: 10px;
-                        i {
-                            margin: 18px 0;
-                            font-size: 1.5rem;
-                            color: #fff;
-                        }
-                    }
-                }
-                .card-text {
-                    margin: 60px 0;
-                }
-            }
-        }
-    }
+  }
+}
+.resume-infos {
+  .job-title > h3 {
+    @include textFormat(24px, #1b1b1b, $transform: capitalize);
+    font-weight: normal;
+  }
+  .job-title > span {
+    @include textFormat(12px, #000000ad, $transform: capitalize);
+    font-style: italic;
+  }
+  .job-description {
+    @include textFormat(14px, #414141);
+    margin-top: 25px;
+    line-height: 1.8;
+    text-align: justify;
+  }
 }
 
-#experiense,
-#education {
-    .text-part {
-        width: 40%;
-        text-align: justify;
-        .head-info {
-            margin-bottom: 20px;
-            line-height: 1.3;
-            p {
-                @include fontStyle(1.5rem, normal, #1b1b1b, capitalize);
-            }
-            span {
-                font-style: italic;
-                @include fontStyle(0.76rem, 100, black, capitalize);
-            }
-        }
-        .main-info {
-            p {
-                font-size: 0.875rem;
-                line-height: 1.8;
-                color: #414141
-            }
-        }
-    }
-}
-
-
 /* ---------------------------------
-                                                                                                                                                                                                                    End tab pane boxes
-                                                                                                                                                                                                               -----------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                 End Resume part 
-                                                                                                                                                                                                                 -----------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                  start client slider
-                                                                                                                                                                                                                 -----------------------------------*/
+   client slider
+-----------------------------------*/
 
 .container-client-slider {
-    max-width: 1230px;
-    margin: 0 auto;
-    text-align: center;
-    .client-head {
-        padding: 5rem 0;
-        @include containerHead;
+  text-align: center;
+  padding: 5rem 0;
+}
+.client-slide {
+  @include flex($justify: center, $align: center, $gap: 30px);
+  min-height: 450px;
+  .text-part {
+    width: 55%;
+    line-height: 2;
+    padding: 14px;
+    text-align: end;
+    p {
+      @include textFormat(16px, #3e3d3d, $transform: capitalize);
+      font-style: italic;
     }
+  }
+}
+.client-slide .testimonial {
+  @include flex($justify: space-between, $align: center);
+  margin-top: 50px;
+  .authur-name {
+    @include textFormat(21px, $yellow);
+    font-weight: 100;
+  }
+  .authur-job {
+    @include textFormat(14px, #666363, $transform: capitalize);
+  }
+}
+.client-slide {
+  .fa-star {
+    color: $yellow;
+  }
 }
 
-.container-client-slider {
-    padding-bottom: 5rem;
-    .row-slide {
-        @include flex(center, center);
-        padding-bottom: 4rem;
-        .text-part {
-            width: 55%;
-            display: inline;
-            text-align: right;
-            p {
-                @include fontStyle(1rem, 400, #3e3d3d, capitalize);
-                line-height: 1.8;
-                font-style: italic;
-                i {
-                    font-size: 2.5rem;
-                    color: #d6d6d6;
-                    position: absolute;
-                    top: 77px;
-                    padding: 0 10px;
-                }
-            }
-        }
-    }
-    .image-part {
-        margin: 0 114px;
-    }
+.client-image {
+  position: relative;
+  &::before {
+    content: "";
+    @include position(absolute, $left: 0, $bottom: 0);
+    opacity: 0.8;
+    border-left: 280px solid $yellow;
+    border-top: 280px solid transparent;
+  }
+  &::after {
+    content: "";
+    @include size(80%, 74%);
+    @include position(absolute, $bottom: -42px, $right: -50px);
+    border-right: 48px solid rgba(250, 53, 135, 0.9803921569);
+    border-bottom: 40px solid rgba(250, 53, 135, 0.9803921569);
+    z-index: -1;
+  }
 }
-
-.container-client-slider {
-    .row-author {
-        .author-name {
-            p {
-                color: $bgcolor;
-                font-size: 1.2rem;
-            }
-        }
-    }
-}
-
-.container-client-slider {
-    .row-author {
-        margin: 3rem 0 0 2rem;
-        @include flex(space-between, center);
-        p {
-            @include fontStyle(1.2rem, bold, $bgcolor, capitalize);
-            font-style: italic;
-        }
-        span {
-            @include fontStyle(0.9rem, 100, #666363, capitalize);
-        }
-        i {
-            color: $bgcolor;
-        }
-    }
-}
-
-.container-client-slider {
-    .image-part {
-        position: relative;
-        .client-image {
-            position: relative;
-            .top-image {
-                content: " ";
-                position: absolute;
-                @include size(0, 0);
-                border-bottom: 249px solid $bgcolor;
-                border-right: 244px solid transparent;
-                bottom: 1px;
-                opacity: 0.8;
-            }
-        }
-        .backpart {
-            @include size(105%, 92%);
-            @include position(absolute, 94px, none, -67px);
-            background: transparent;
-            border-right: 57px solid #fa3587fa;
-            border-bottom: 58px solid #fa3587fa;
-            .shadow {
-                position: absolute;
-                top: -30px;
-                right: -51px;
-                background: #ffff;
-                width: 53px;
-                height: 32px;
-                box-shadow: 0px 20px 16px 20px #fff;
-            }
-        }
-    }
-}
-
 
 /* ---------------------------------
-                                                                                                                                                                                                                  start client slider button
-                                                                                                                                                                                                                 -----------------------------------*/
-
-.container-client-slider {
-    .owl-nav {
-        @include position(absolute, none, 0, -35px);
-        bottom: 100px;
-        button.owl-prev,
-        button.owl-next {
-            @include size(20px, 20px);
-            @include fontStyle(1.1rem, bold, #fff, normal);
-            background: darkslategray;
-            border-radius: 50%;
-            margin: 0 7px;
-            transition: all 0.2s ease-in;
-            &:hover {
-                background-color: $bgcolor;
-                color: black;
-            }
-        }
-    }
-}
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                  finish client slider buttons
-                                                                                                                                                                                                                 -----------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                  finish client slider
-                                                                                                                                                                                                                 -----------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                  Start news part
-                                                                                                                                                                                                                 -----------------------------------*/
+   Start news part
+  -----------------------------------*/
 
 .container-news-part {
-    max-width: 1141px;
-    margin: 0 auto;
-    text-align: center;
-    .news-head {
-        @include containerHead;
-        padding-bottom: 5rem;
+  .row-news {
+    @include grid(
+      $column: repeat(2, 1fr),
+      $rows: repeat(3, max-content),
+      $gap: 20px
+    );
+
+    .news-item {
+      position: relative;
+      grid-column: 1 / 3;
+      width: 100%;
+      @include flex($align: flex-end, $gap: 30px);
     }
-    .row-new-main {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
+  }
 }
 
-
-/* ---------------------------------
-                                                                                                                                                                                                                  Start news part text part
-                                                                                                                                                                                                                 -----------------------------------*/
-
-.row-new-main {
-    .row-news-left-side,
-    .row-news-right-side {
-        @include flex(space-between, center);
-        margin: 12px 0;
-        .text-part {
-            width: 44%;
-            .news-information {
-                display: flex;
-                flex-wrap: wrap;
-            }
-        }
+.news-item {
+  &:nth-child(2) {
+    grid-row: 2 / 3;
+    flex-direction: row-reverse;
+    .news-publish-date {
+      left: 49%;
+      flex-direction: row-reverse;
     }
+  }
+  &:nth-child(3) {
+    grid-row: 3/4;
+  }
 }
-
+.news-item {
+  .text-part {
+    @include grid($rows: repeat(2, 1fr));
+    @include size(50%, 100%);
+    line-height: 1.8;
+    align-items: center;
+  }
+  .image-part {
+    width: 50%;
+    img {
+      width: 100%;
+    }
+  }
+}
 .news-information {
-    a {
-        text-decoration: none;
-        line-height: 2;
-        h3 {
-            color: black;
-            text-transform: capitalize;
-            letter-spacing: 1px;
-        }
-        span {
-            color: #a0a0a0;
-            font-size: 0.875rem;
-            letter-spacing: 1px;
-        }
-    }
+  grid-row: 2;
+  .news-title {
+    text-transform: capitalize;
+    letter-spacing: 1px;
+  }
+  .news-subtitle {
+    @include textFormat(14px, #a0a0a0);
+    letter-spacing: 1px;
+  }
 }
 
-.row-news-right-side,
-.row-news-left-side {
-    .text-part {
-        @include size(44%, 327px);
-        /* margin-top: 120px; */
-        flex-direction: column;
-        @include flex(space-around, flex-end);
-        .date-news {
-            display: flex;
-            margin: 0 -84px 0 0;
-            z-index: 1;
-            .num {
-                order: 1;
-                @include fontStyle(2rem, bold, $bgcolor, normal);
-            }
-            .date {
-                display: flex;
-                flex-direction: column;
-                @include interval(-10px 0, 0 0 0 14px);
-                align-items: flex-start;
-                color: #605b5b;
-                text-transform: capitalize;
-            }
-        }
-    }
+.news-publish-date {
+  @include position(absolute, $top: 30%, $left: 51%);
+  @include flex($gap: 3px);
+  transform: translate(-51%, -30%);
+  text-align: center;
+  .date-info {
+    @include textFormat($color: #605b5b, $transform: capitalize);
+  }
+  .date-day {
+    @include textFormat(30px, $yellow);
+    font-weight: bold;
+  }
 }
-
-.row-news-right-side {
-    .text-part {
-        align-items: flex-start;
-        .date-news {
-            margin: 0 0 0 -86px;
-            .num {
-                order: 0;
-            }
-        }
-    }
+.view-button {
+  margin-top: 50px;
+  text-align: center;
 }
-
-.container-news-part {
-    .view-button {
-        padding: 2.5rem 0 6rem 0;
-        .view-btn {
-            @include button;
-            i {
-                margin-left: 5px
-            }
-        }
-    }
-}
-
 
 /* ---------------------------------
-                                                                                                                                                                                                                  finish news part text part
-                                                                                                                                                                                                                 -----------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                  finish news part
-                                                                                                                                                                                                                 -----------------------------------*/
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                  Start form part
-                                                                                                                                                                                                                 -----------------------------------*/
+    form part
+ -----------------------------------*/
 
 .container-form {
-    @include maxWidth;
-    text-align: center;
-    .form-head {
-        @include containerHead;
-        padding-bottom: 4rem;
-    }
+  text-align: center;
+  margin-top: 4rem;
+  .section-header {
+    padding-bottom: 2rem;
+  }
+  .send-button {
+    margin-top: 30px;
+  }
 }
 
 form {
-    .row-form {
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        input {
-            padding: 1.3rem 1rem;
-            width: 48%;
-            margin-bottom: 13px;
-            background: #f8f8f8;
-            border: none;
-            outline: none;
-        }
-    }
-    .massege-area {
-        padding: 1.3rem 1rem;
-        background: #f8f8f8;
-        border: none;
-        outline: none;
-    }
-}
-
-form {
-    .send-button {
-        padding: 3rem 0 5rem 0;
-        .btn-send {
-            @include button;
-            i {
-                margin-left: 5px;
-            }
-        }
-    }
-}
-
-
-/* ---------------------------------
-                                                                                                                                                                                                                              Finish form part
-                                                                                                                                                                                                                           -----------------------------------*/
-
-button#Btnscroll {
-    position: fixed;
-    right: 10px;
-    bottom: 7px;
-    z-index: 99;
-    width: 50px;
-    height: 50px;
-    background: #ffa700;
+  @include grid($column: repeat(2, 1fr), $gap: 10px);
+  .form-input {
+    padding: 16px;
+    min-height: 55px;
+    width: 100%;
+    background: #f4f4f4;
     border: none;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
+    outline: none;
+  }
+  .message-textarea {
+    grid-column: 1 / 3;
+    height: 10rem;
+  }
+}
+/* --------------------------------
+  scroll to top button
+  --------------------------------*/
+#Btnscroll {
+  @include position(fixed, $right: 10px, $bottom: 7px);
+  @include size(50px, 50px);
+  z-index: 99;
+  background: $yellow;
+  border: none;
+  border-radius: 50%;
+  @include textFormat(1.2rem, $white, $cursor: pointer);
+  opacity: 0;
+  transition: all 0.3s;
+  &.active {
+    opacity: 1;
+  }
 }
